@@ -1,6 +1,21 @@
+#include <openvdb/Exceptions.h>
+#include <openvdb/openvdb.h>
+#include <openvdb/tools/MeshToVolume.h>
+#include <openvdb/tools/VolumeToMesh.h>
+#include <openvdb/util/Util.h>
+#include <vector>
+#include <cstdio>
+#include <string>
+#include <omp.h>
+#include <algorithm>
+
 #include "preprocess.h"
 #include "logger.h"
 #include "shape.h"
+//#include "src/bvh.h"
+#include "bvh.h"
+
+using namespace openvdb;
 
 namespace coacd
 {
@@ -18,7 +33,9 @@ namespace coacd
 
         for (unsigned int i = 0; i < input.points.size(); ++i)
         {
-            points.push_back({input.points[i][0] * scale, input.points[i][1] * scale, input.points[i][2] * scale});
+            points.push_back({static_cast<float>(input.points[i][0] * scale),
+                              static_cast<float>(input.points[i][1] * scale),
+                              static_cast<float>(input.points[i][2] * scale)});
         }
         for (unsigned int i = 0; i < input.triangles.size(); ++i)
         {

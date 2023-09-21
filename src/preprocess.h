@@ -1,20 +1,5 @@
 #pragma once
-#include <openvdb/Exceptions.h>
-#include <openvdb/openvdb.h>
-#include <openvdb/tools/MeshToVolume.h>
-#include <openvdb/tools/VolumeToMesh.h>
-#include <openvdb/util/Util.h>
-#include <vector>
-#include <cstdio>
-#include <string>
-#include <omp.h>
-#include <algorithm>
-
 #include "model_obj.h"
-#include "logger.h"
-#include "bvh.h"
-
-using namespace openvdb;
 
 namespace coacd
 {

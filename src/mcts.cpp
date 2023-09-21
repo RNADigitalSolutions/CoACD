@@ -1,3 +1,4 @@
+#include <random>
 #include <stdint.h>
 #include "mcts.h"
 
@@ -626,8 +627,11 @@ namespace coacd
             planes.push_back(Plane(0.0, 0.0, 1.0, -i));
         }
 
-        if (shuffle)
-            random_shuffle(planes.begin(), planes.end());
+        if (shuffle) {
+            std::random_device rd;
+            std::mt19937 g(rd());
+            std::shuffle(planes.begin(), planes.end(), g);
+        }
     }
 
     bool ComputeBestRvClippingPlane(Model &m, Params &params, vector<Plane> &planes, Plane &bestplane, double &bestcost)
