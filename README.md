@@ -11,7 +11,12 @@ Approximate convex decomposition enables efficient geometry processing algorithm
 
 ## Compile from Source on Windows x64
 
-!!**TODO**!!
+- Install required packages
+```
+.\vcpkg.exe install tbb:x64-windows
+.\vcpkg.exe install openvdb:x64-windows
+.\vcpkg.exe install spdlog:x64-windows
+```
 
 ## PyPI
 
